@@ -1,18 +1,11 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, createContext } from "react";
 import { Budget} from "./components/Budget/Budget";
 import { ExpensesList } from "./components/Expenses/ExpensesList";
 import { Form } from "./components/Form/Form";
 import { Wrapper } from "./wrapper";
 import { ExpensesContextProvider } from "./context/ExpensesListContext/ExpensesListContext";
 import { BudgetContextProvider } from "./context/BudgeContext/BudgetContext";
-
-const AppContext = ({ children }: {children: ReactNode}) => (
-    <BudgetContextProvider>
-        <ExpensesContextProvider>
-            {children}
-        </ExpensesContextProvider>
-    </BudgetContextProvider>
-)
+import { AppContext } from "./context/AppContex/AppContex";
 
 const App = () => {
 
