@@ -1,16 +1,30 @@
-import React from "react";
+import React, { ReactNode } from "react";
+import { Budget} from "./components/Budget/Budget";
 import { ExpensesList } from "./components/Expenses/ExpensesList";
 import { Form } from "./components/Form/Form";
-import GlobalStyle from "./globalStyles";
+import { Wrapper } from "./wrapper";
+import { ExpensesContextProvider } from "./context/ExpensesListContext/ExpensesListContext";
+import { BudgetContextProvider } from "./context/BudgeContext/BudgetContext";
 
-export const App = () => (
-  <>
-    <GlobalStyle />
-    <div>
-        <h2>Welcome to App</h2>
-        <Form />
-        <ExpensesList />
-    </div>
-  </>
-  
-);
+const AppContext = ({ children }: {children: ReactNode}) => (
+    <BudgetContextProvider>
+        <ExpensesContextProvider>
+            {children}
+        </ExpensesContextProvider>
+    </BudgetContextProvider>
+)
+
+const App = () => {
+
+    return (
+        <AppContext>
+            <Wrapper>
+                <Budget />
+                <ExpensesList />
+                <Form />
+            </Wrapper>
+        </AppContext>
+    )
+};
+
+export default App;

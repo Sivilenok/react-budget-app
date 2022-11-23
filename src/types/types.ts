@@ -5,7 +5,7 @@ export interface IExpensesContextProviderProps {
 }
 
 export interface IExpense {
-  id: string;
+  id: number;
   title: string;
   cost: number;
 }
@@ -13,5 +13,14 @@ export interface IExpense {
 export interface IExpenseContext {
   expenses: IExpense[];
   setNewExpense: (expense: IExpense) => void;
-  deleteExpense: (id: string) => void;
+  deleteExpense: (id: number) => void;
+}
+
+export interface IBudgetContext {
+  budget: string | number;
+  remaining: number;
+  spending: number;
+  setBudget: (budget: string | number) => void;
+  setRemaining: (remaining: number) => void;
+  setSpending: (spending: number) => void;
 }

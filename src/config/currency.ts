@@ -1,1 +1,5 @@
-import React from "react";
+export enum Currency {
+  USD = "$",
+  EUR = "€",
+  GBR = "£",
+}

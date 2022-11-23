@@ -1,7 +1,8 @@
 import { createContext, useContext, useState } from "react";
-import { IExpenseContext, IExpensesContextProviderProps} from "./types/types";
+import { IExpenseContext, IExpensesContextProviderProps } from "../../types/types";
 
-export const ExpensesContext = createContext<IExpenseContext>(
+
+ export const ExpensesContext = createContext<IExpenseContext>(
   {} as IExpenseContext
 );
 
@@ -10,7 +11,7 @@ const useExpensesContextValue = () => {
         () => ({
             expenses: [
                 {
-                    id: "1234567",
+                    id: 1234567,
                     title: "Lopata",
                     cost: 100,
                 },
@@ -21,7 +22,7 @@ const useExpensesContextValue = () => {
                     expenses: [...ctx.expenses, newExpense],
                 }));
             },
-            deleteExpense: (id: string) => {
+            deleteExpense: (id: number) => {
                 setExpensesContext(ctx => ({
                     ...ctx,
                     expenses: ctx.expenses.filter(exp => exp.id !== id),
@@ -45,3 +46,4 @@ export const ExpensesContextProvider = ({
     </ExpensesContext.Provider>
   );
 };
+
