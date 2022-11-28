@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { StyledBudget, StyledHeader } from "./styles";
 import { Title } from "../Title/Title";
 import { CustomSelect } from "../Select/Select";
@@ -19,6 +19,11 @@ export const Budget = () => {
     setSpending,
   } = useBudgetContext();
 
+    const useInput = (initValue: string = "") => {
+    const [value, setValue] = useState(initValue);
+    const onChange = (event: ChangeEvent<HTMLInputElement>) => setValue(event.target.value);
+    return { value, onChange };
+  };
 
   const onSubmitBudget = () => {
     setIsSaved(!isSaved)
@@ -29,17 +34,17 @@ export const Budget = () => {
     <StyledBudget>
       <StyledHeader>
           <Title />
-          
           <CurrencyContextProvider>
             <CustomSelect />
           </CurrencyContextProvider>
       </StyledHeader>
 
+      
       <StyledBudgetCard>
         <StyledBudgetInput 
           value={budget}
           disabled={isSaved}
-          onChange={event => setBudget(event.target.value)} 
+          onChange={useInput} 
           type="number" 
           placeholder="Enter  budget..." 
         />

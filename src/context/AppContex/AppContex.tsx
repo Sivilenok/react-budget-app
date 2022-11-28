@@ -8,4 +8,4 @@ export const AppContext = ({ children }: {children: ReactNode}) => (
             {children}
         </ExpensesContextProvider>
     </BudgetContextProvider>
-)
+);

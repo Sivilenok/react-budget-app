@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { useBudgetContext } from "../../context/BudgeContext/BudgetContext";
+import { useCurrencyContext } from "../../context/CurrencyContext/CurrencyContext";
 import { useExpensesContext } from "../../context/ExpensesListContext/ExpensesListContext";
-import { 
+import { IFormData, IExpense } from "../../types/types";
+import {  
   StyledExpensesList, 
   StyledExpensesListItemCost, 
   StyledExpensesListInput, 
@@ -12,7 +15,8 @@ import {
 export const ExpensesList = () => {
     let spentAmount = 0;
     const { expenses, deleteExpense } = useExpensesContext();
-
+    const [filtredExpenses, setFiltredExpenses] = useState();
+    
     return (
       <StyledExpensesList>
         <h1>Expenses</h1>
@@ -20,19 +24,17 @@ export const ExpensesList = () => {
         <StyledExpensesListInput placeholder="search..." />
 
           {expenses ? (<ul>
-              {expenses?.map(({ id, title, cost }) => {
+              {expenses?.map(({ id, name, cost }) => {
                   spentAmount += cost;
 
                   return (
                     <StyledExpensesListItem 
-                      key={id} 
-                      onClick={() => deleteExpense(id)}
-                    >
+                      key={id} name={name} cost={cost} id={id}                    >
                       <StyledExpensesListItemWrapper>
-                          {title}
+                          {name}
 
                           <StyledExpensesListItemCost>
-                            ${cost}
+                            {cost}
                           </StyledExpensesListItemCost>
                         </StyledExpensesListItemWrapper>
 

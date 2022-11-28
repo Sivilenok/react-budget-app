@@ -1,21 +1,37 @@
 import React from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useBudgetContext } from "../../context/BudgeContext/BudgetContext";
 import { useExpensesContext } from "../../context/ExpensesListContext/ExpensesListContext";
+import { IFormData } from "../../types/types";
 import { StyledForm, StyledFormInput, StyledFormButton } from "./styles";
+import { v4 } from "uuid";
 
 export const Form = () => {
   const { setNewExpense } = useExpensesContext();
+  const { setRemaining, setSpending, budget } = useBudgetContext();
+  const { 
+    register,
+    handleSubmit,
+    reset, formState: { errors }, 
+  } = useForm<IFormData>({ mode: "onBlur"});
 
-  const handleSubmit = () => {
-    setNewExpense({ id: 1234567, title: "shapka", cost: 80 });
+  const onSubmit: SubmitHandler<IFormData> = ({ name, cost }) => {
+    if (budget > 0) {
+      setNewExpense ({id: v4(), name, cost});
+      setSpending(cost);
+      setRemaining();
+      reset()
+    }
   };
+  
   return (
     <StyledForm>
       <h1>Add Expense</h1>
       
       <StyledFormInput placeholder="enter name..." />
-      <StyledFormInput placeholder="enter price..." />
+      <StyledFormInput placeholder="enter cost..." />
 
-      <StyledFormButton onClick={handleSubmit}>DONE</StyledFormButton>
+      <StyledFormButton type="submit">DONE</StyledFormButton>
     </StyledForm>
   );
 };

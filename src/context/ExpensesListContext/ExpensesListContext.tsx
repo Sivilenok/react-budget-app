@@ -1,41 +1,38 @@
 import { createContext, useContext, useState } from "react";
-import { IExpenseContext, IExpensesContextProviderProps } from "../../types/types";
+import {
+  IExpense,
+  IExpenseContext,
+  IExpensesContextProviderProps,
+} from "../../types/types";
 
-
- export const ExpensesContext = createContext<IExpenseContext>(
+export const ExpensesContext = createContext<IExpenseContext>(
   {} as IExpenseContext
 );
 
 const useExpensesContextValue = () => {
-    const [expensesContext, setExpensesContext] = useState<IExpenseContext>(
-        () => ({
-            expenses: [
-                {
-                    id: 1234567,
-                    title: "Lopata",
-                    cost: 100,
-                },
-            ],
-            setNewExpense: newExpense => {
-                setExpensesContext(ctx => ({
-                    ...ctx,
-                    expenses: [...ctx.expenses, newExpense],
-                }));
-            },
-            deleteExpense: (id: number) => {
-                setExpensesContext(ctx => ({
-                    ...ctx,
-                    expenses: ctx.expenses.filter(exp => exp.id !== id),
-                }));
-            }
-        })
-    );
+  const [expensesContext, setExpensesContext] = useState<IExpenseContext>(() => ({
+      expenses: [],
+    
+      setNewExpense: (newExpense: IExpense) => {
+        setExpensesContext((ctx) => ({
+          ...ctx,
+          expenses: [...ctx.expenses, newExpense],
+        }));
+      },
+      deleteExpense: (id) => {
+        setExpensesContext((ctx) => ({
+          ...ctx,
+          expenses: ctx.expenses.filter((exp) => exp.id !== id),
+        }));
+      },
+    })
+  );
 
-    return expensesContext;
+  return expensesContext;
 };
 
-export const useExpensesContext = () => 
-    useContext<IExpenseContext>(ExpensesContext);
+export const useExpensesContext = () =>
+  useContext<IExpenseContext>(ExpensesContext);
 
 export const ExpensesContextProvider = ({
   children,
@@ -46,4 +43,3 @@ export const ExpensesContextProvider = ({
     </ExpensesContext.Provider>
   );
 };
-

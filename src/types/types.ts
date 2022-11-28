@@ -5,22 +5,31 @@ export interface IExpensesContextProviderProps {
 }
 
 export interface IExpense {
-  id: number;
-  title: string;
+  id: string;
+  name: string;
   cost: number;
 }
 
 export interface IExpenseContext {
-  expenses: IExpense[];
+  expenses: IExpense[] | [];
   setNewExpense: (expense: IExpense) => void;
-  deleteExpense: (id: number) => void;
+  deleteExpense: (id: string) => void;
 }
 
 export interface IBudgetContext {
-  budget: string | number;
+  budget: number;
   remaining: number;
   spending: number;
-  setBudget: (budget: string | number) => void;
-  setRemaining: (remaining: number) => void;
+  setBudget: (newBudget: number) => void;
+  setRemaining: () => void;
   setSpending: (spending: number) => void;
+}
+
+export interface IFormData {
+  name: string;
+  cost: number;
+}
+
+export interface IChildrenContext {
+  children: ReactNode;
 }
