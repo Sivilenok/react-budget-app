@@ -2,7 +2,7 @@ Project 4
 
 <span>React-budget-app<span>
 
-https://github.com/Sivilenok/react-budget-app
+https://Sivilenok/github.io/react-budget-app
 
 Project description
 
