@@ -2,6 +2,8 @@ Project 4
 
 <span>React-budget-app<span>
 
+https://github.com/Sivilenok/react-budget-app
+
 Project description
 
 The amount of purchases is entered in the fields, the total amount is calculated, the limit is exceeded and how much is spent, you can also enter the user name, the amount, the submit button, the currency is changed.
