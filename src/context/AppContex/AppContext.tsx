@@ -1,11 +1,11 @@
 import { ReactNode, useContext, useState } from "react";
 import { BudgetContextProvider } from "../BudgeContext/BudgetContext";
-import { ExpensesContextProvider } from "../ExpensesListContext/ExpensesListContext";
+import { ExpensesListContext } from "../ExpensesListContext/ExpensesListContext";
 
 export const AppContext = ({ children }: {children: ReactNode}) => (
     <BudgetContextProvider>
-        <ExpensesContextProvider>
+        <ExpensesListContext>
             {children}
-        </ExpensesContextProvider>
+        </ExpensesListContext>
     </BudgetContextProvider>
 );

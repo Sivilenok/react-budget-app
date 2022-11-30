@@ -4,6 +4,11 @@ import { ICurrencyContext, ICurrencyContextProviderProps, ICurrencyOption } from
 
 const CurrencyContext = createContext<ICurrencyContext>({} as ICurrencyContext);
 
+type CurrencyOption = {
+    label: keyof Currency;
+    value: Currency;
+};
+
 const useCurrencyContextValue = () => {
     const [currencyContext, setCurrencyContext] = useState<ICurrencyContext>(
         () => ({
@@ -25,12 +30,10 @@ const useCurrencyContextValue = () => {
     return currencyContext;
 };
 
-export const useCurrencyContext = () =>
+export const CurrencyContextProvider = () =>
     useContext<ICurrencyContext>(CurrencyContext);
 
-export const CurrencyContextProvider = ({
-    children,
-}: ICurrencyContextProviderProps) => {
+export const CurrencyContextProvider = ({children}: ICurrencyContext) => {
     return (
         <CurrencyContext.Provider value={useCurrencyContextValue()}>
             {children}

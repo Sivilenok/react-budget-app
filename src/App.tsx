@@ -5,14 +5,15 @@ import { Form } from "./components/Form/Form";
 import { Wrapper } from "./wrapper";
 import { ExpensesContextProvider } from "./context/ExpensesListContext/ExpensesListContext";
 import { BudgetContextProvider } from "./context/BudgeContext/BudgetContext";
-import { AppContext } from "./context/AppContex/AppContex";
+import { AppContext } from "./context/AppContex/AppContext";
+import { ExpensesList } from "./components/Expenses/ExpensesList";
 
 const App = () => {
   return (
     <AppContext>
       <Wrapper>
         <Budget />
-        <ExpensesList />
+        <ExpensesList expensesList={[]} />
         <Form />
       </Wrapper>
     </AppContext>

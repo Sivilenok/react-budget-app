@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { Currency } from "../config/currency";
 
 export interface IExpensesContextProviderProps {
   children: ReactNode;
@@ -32,4 +33,9 @@ export interface IFormData {
 
 export interface IChildrenContext {
   children: ReactNode;
+}
+
+export interface ICurrencyOption {
+  value: Currency;
+  label: keyof typeof Currency;
 }

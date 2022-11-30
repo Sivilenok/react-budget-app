@@ -20,9 +20,9 @@ export const Budget = () => {
   } = useBudgetContext();
 
     const useInput = (initValue: string = "") => {
-    const [value, setValue] = useState(initValue);
-    const onChange = (event: ChangeEvent<HTMLInputElement>) => setValue(event.target.value);
-    return { value, onChange };
+      const [value, setValue] = useState(initValue);
+      const onChange = (event: ChangeEvent<HTMLInputElement>) => setValue(event.target.value);
+      return { value, onChange };
   };
 
   const onSubmitBudget = () => {
@@ -44,7 +44,7 @@ export const Budget = () => {
         <StyledBudgetInput 
           value={budget}
           disabled={isSaved}
-          onChange={useInput} 
+          onChange={useState} 
           type="number" 
           placeholder="Enter  budget..." 
         />

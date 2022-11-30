@@ -34,7 +34,7 @@ const useExpensesContextValue = () => {
 export const useExpensesContext = () =>
   useContext<IExpenseContext>(ExpensesContext);
 
-export const ExpensesContextProvider = ({
+export const ExpensesListContext = ({
   children,
 }: IExpensesContextProviderProps) => {
   return (

@@ -18,13 +18,6 @@ export const StyledExpensesListInput = styled.input`
     }
 `;
 
-export const StyledExpensesListItem = styled.li`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 0;
-    border-bottom: 2px solid #CCD5FF;
-`;
 
 export const StyledExpensesListItemWrapper = styled.div`
     width: 100%;
@@ -35,7 +28,7 @@ export const StyledExpensesListItemWrapper = styled.div`
     font-size: 16px;
 `;
 
-export const StyledExpensesListItemCost = styled.span`
+export const StyledExpensesListItem = styled.span`
     display:flex;
     align-items: center;
     padding: 3px 12px;
@@ -44,9 +37,4 @@ export const StyledExpensesListItemCost = styled.span`
 
     font-size: 12px;
     color: #FFFFFF;
-`;
-
-export const StyledExpensesListCrossButton = styled.button`
-    color: red;
-    font-size: 18px;
 `;
