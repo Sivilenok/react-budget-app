@@ -1,13 +1,9 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { Currency } from "../../config/currency";
-import { ICurrencyContext, ICurrencyContextProviderProps, ICurrencyOption } from "./index";
+import { ICurrencyContextProviderProps, ICurrencyContext, ICurrencyOption } from "./index";
 
 const CurrencyContext = createContext<ICurrencyContext>({} as ICurrencyContext);
-
-type CurrencyOption = {
-    label: keyof Currency;
-    value: Currency;
-};
+export const useCurrencyContext = () => useContext(CurrencyContext);
 
 const useCurrencyContextValue = () => {
     const [currencyContext, setCurrencyContext] = useState<ICurrencyContext>(
@@ -19,21 +15,19 @@ const useCurrencyContextValue = () => {
                 { value: Currency.GBR, label: "GBR" },
             ],
             setCurrency: (currentCurrency: ICurrencyOption) => {
-                setCurrencyContext(ctx => ({
+                setCurrencyContext((ctx: any) => ({
                     ...ctx,
                     currentCurrency,
                 }));
-            }
-        })
-    );
-
-    return currencyContext;
+            },
+        }));
+       return currencyContext;
 };
 
-export const CurrencyContextProvider = () =>
+export const useCurrencyContextProvider = () =>
     useContext<ICurrencyContext>(CurrencyContext);
 
-export const CurrencyContextProvider = ({children}: ICurrencyContext) => {
+export const CurrencyContextProvider = ({children}: ICurrencyContextProviderProps) => {
     return (
         <CurrencyContext.Provider value={useCurrencyContextValue()}>
             {children}

@@ -1,11 +1,16 @@
-import { ReactNode, useContext, useState } from "react";
-import { BudgetContextProvider } from "../BudgeContext/BudgetContext";
-import { ExpensesListContext } from "../ExpensesListContext/ExpensesListContext";
+interface IProps {
+  components: Array<React.JSXElementConstructor<React.PropsWithChildren<any>>>;
+  children: React.ReactNode;
+}
 
-export const AppContext = ({ children }: {children: ReactNode}) => (
-    <BudgetContextProvider>
-        <ExpensesListContext>
-            {children}
-        </ExpensesListContext>
-    </BudgetContextProvider>
-);
+export const AppContextProvider = (props: IProps) => {
+  const { components = [], children } = props;
+
+    return (
+        <>
+           {components.reduceRight((acc, Comp) => {
+              return <Comp>{acc}</Comp>;
+           }, children)}
+        </>
+    );
+};

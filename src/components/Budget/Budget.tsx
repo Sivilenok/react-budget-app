@@ -5,18 +5,12 @@ import { CustomSelect } from "../Select/Select";
 import { StyledBudgetCard, StyledBudgetButton, StyledBudgetInput } from "../BudgetCard/styles";
 import { StyledRemainingCard } from "../RemainingCard/styles";
 import { StyledSpentCard } from "../SpentCard/styles";
-import { CurrencyContextProvider } from "../../context/CurrencyContext/CurrencyContext";
 import { useBudgetContext } from "../../context/BudgeContext/BudgetContext";
 
 export const Budget = () => {
   const [isSaved, setIsSaved] = useState<boolean>(false)
   const { 
     budget,
-    remaining,
-    spending,
-    setBudget, 
-    setRemaining,
-    setSpending,
   } = useBudgetContext();
 
     const useInput = (initValue: string = "") => {
@@ -34,9 +28,7 @@ export const Budget = () => {
     <StyledBudget>
       <StyledHeader>
           <Title />
-          <CurrencyContextProvider>
             <CustomSelect />
-          </CurrencyContextProvider>
       </StyledHeader>
 
       
@@ -55,11 +47,11 @@ export const Budget = () => {
       </StyledBudgetCard>
 
       <StyledRemainingCard>
-        Remaining: ${remaining}
+        Remaining: 
       </StyledRemainingCard>
       
       <StyledSpentCard>
-        Spent so far: ${spending}
+        Spent so far: 
       </StyledSpentCard>
     </StyledBudget>
   );

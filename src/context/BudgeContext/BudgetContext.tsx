@@ -1,9 +1,8 @@
-import { createContext, ReactNode, useContext, useState } from "react";
-import { IBudgetContext } from "../../types/types";
+import { createContext, useContext, useState } from "react";
+import { IBudgetContext, IChildrenContext } from "./index";
 
-export const BudgetContext = createContext<IBudgetContext>(
-  {} as IBudgetContext
-);
+const BudgetContext = createContext<IBudgetContext>({} as IBudgetContext);
+export const useBudgetContext = () => useContext(BudgetContext);
 
 const useBudgetContextValue = () => {
   const [budgetContext, setBudgetContext] = useState<IBudgetContext>(() => ({
@@ -14,33 +13,11 @@ const useBudgetContextValue = () => {
         budget: newBudget,
       }));
     },
-
-    remaining: 0,
-    setRemaining: () => {
-      setBudgetContext((ctx) => ({
-        ...ctx,
-        remaining: +ctx.budget - ctx.spending,
-      }));
-    },
-
-    spending: 0,
-    setSpending: (newSpending) => {
-      setBudgetContext((ctx) => ({
-        ...ctx,
-        spending: ctx.spending + newSpending,
-      }));
-    },
   }));
   return budgetContext;
 };
 
-export const useBudgetContext = () => useContext<IBudgetContext>(BudgetContext);
-
-export const BudgetContextProvider = ({
-  children,
-}: {
-  children: ReactNode;
-}) => {
+export const BudgetContextProvider = ({ children }: IChildrenContext) => {
   return (
     <BudgetContext.Provider value={useBudgetContextValue()}>
       {children}

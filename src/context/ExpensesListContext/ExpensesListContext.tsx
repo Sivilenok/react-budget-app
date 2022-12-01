@@ -1,22 +1,20 @@
 import { createContext, useContext, useState } from "react";
-import {
-  IExpense,
-  IExpenseContext,
-  IExpensesContextProviderProps,
-} from "../../types/types";
+import { IExpenseContext, IChildrenContext } from "./index";
 
-export const ExpensesContext = createContext<IExpenseContext>(
+const ExpensesContext = createContext<IExpenseContext>(
   {} as IExpenseContext
 );
+
+export const useExpensesContext = () => useContext(ExpensesContext);
 
 const useExpensesContextValue = () => {
   const [expensesContext, setExpensesContext] = useState<IExpenseContext>(() => ({
       expenses: [],
     
-      setNewExpense: (newExpense: IExpense) => {
+      setNewExpense: (exp) => {
         setExpensesContext((ctx) => ({
           ...ctx,
-          expenses: [...ctx.expenses, newExpense],
+          expenses: [...ctx.expenses, exp],
         }));
       },
       deleteExpense: (id) => {
@@ -31,12 +29,7 @@ const useExpensesContextValue = () => {
   return expensesContext;
 };
 
-export const useExpensesContext = () =>
-  useContext<IExpenseContext>(ExpensesContext);
-
-export const ExpensesListContext = ({
-  children,
-}: IExpensesContextProviderProps) => {
+export const ExpensesContextProvider = ({ children }: IChildrenContext) => {
   return (
     <ExpensesContext.Provider value={useExpensesContextValue()}>
       {children}

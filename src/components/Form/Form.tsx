@@ -8,7 +8,7 @@ import { v4 } from "uuid";
 
 export const Form = () => {
   const { setNewExpense } = useExpensesContext();
-  const { setRemaining, setSpending, budget } = useBudgetContext();
+  const { budget } = useBudgetContext();
   const { 
     register,
     handleSubmit,
@@ -18,8 +18,6 @@ export const Form = () => {
   const onSubmit: SubmitHandler<IFormData> = ({ name, cost }) => {
     if (budget > 0) {
       setNewExpense ({id: v4(), name, cost});
-      setSpending(cost);
-      setRemaining();
       reset()
     }
   };

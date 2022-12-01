@@ -1,11 +1,8 @@
-import { useState } from "react";
-import { useBudgetContext } from "../../context/BudgeContext/BudgetContext";
-import { useCurrencyContext } from "../../context/CurrencyContext/CurrencyContext";
-import { useExpensesContext } from "../../context/ExpensesListContext/ExpensesListContext";
 import { IExpense } from "../../types/types";
 import { StyledExpensesListItem } from "../ExpensesListItem/styles";
 import { StyledExpensesListInput } from "./styles";
 import { StyledExpensesList } from "../Expenses/styles";
+import { ExpensesListItem } from "../ExpensesListItem/ExpensesListItem";
 
 interface IProps {
   expensesList: IExpense[];
@@ -18,7 +15,7 @@ export const ExpensesList = ({ expensesList }: IProps) => {
 
         <StyledExpensesListInput placeholder="search..." />
         {expensesList.map(({ name, cost, id }) => (
-          <StyledExpensesListItem key={id} name={name} cost={cost} id={id} />
+          <ExpensesListItem key={id} name={name} cost={cost} id={id} />
         ))}
           
       </StyledExpensesList>
