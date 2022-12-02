@@ -24,3 +24,8 @@ export interface ICurrencyOption {
   value: Currency;
   label: keyof typeof Currency;
 }
+
+export interface IBudgetContext {
+  budget: number;
+  setBudget: (value: number) => void;
+}

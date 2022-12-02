@@ -1,17 +1,15 @@
 import React, { ReactNode, createContext } from "react";
 import { Budget } from "./components/Budget/Budget";
-import { ExpensesList } from "./components/Expenses/ExpensesList";
+import { ExpensesList } from "./components/ExpensesList/ExpensesList";
 import { Form } from "./components/Form/Form";
 import { Wrapper } from "./wrapper";
 
-const App = () => {
+export const App = () => {
   return (
     <Wrapper>
         <Budget />
-        <ExpensesList expensesList={[]} />
+        <ExpensesList />
         <Form />
       </Wrapper>
   );
 };
-
-export default App;

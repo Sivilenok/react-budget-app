@@ -1,10 +1,8 @@
-import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useBudgetContext } from "../../context/BudgeContext/BudgetContext";
-import { useExpensesContext } from "../../context/ExpensesListContext/ExpensesListContext";
-import { IFormData } from "../../types/types";
-import { StyledForm, StyledFormInput, StyledFormButton } from "./styles";
 import { v4 } from "uuid";
+import { IFormData, useBudgetContext, useExpensesContext } from "../../context";
+import { Title } from "../Title/Title";
+import { StyledForm, StyledFormButton, StyledFormInput } from "./styles";
 
 export const Form = () => {
   const { setNewExpense } = useExpensesContext();
@@ -12,7 +10,8 @@ export const Form = () => {
   const { 
     register,
     handleSubmit,
-    reset, formState: { errors }, 
+    reset,    
+    formState: { errors },
   } = useForm<IFormData>({ mode: "onBlur"});
 
   const onSubmit: SubmitHandler<IFormData> = ({ name, cost }) => {
@@ -23,13 +22,27 @@ export const Form = () => {
   };
   
   return (
-    <StyledForm>
-      <h1>Add Expense</h1>
-      
-      <StyledFormInput placeholder="enter name..." />
-      <StyledFormInput placeholder="enter cost..." />
-
-      <StyledFormButton type="submit">DONE</StyledFormButton>
-    </StyledForm>
-  );
+    <StyledForm onSubmit={handleSubmit(onSubmit)}>
+    <Title label="add expense" />
+    <StyledFormInput
+      {...register("name", {
+        required: "Name is required",
+        minLength: { value: 4, message: "Minimum characters 4" },
+      })}
+      type="text"
+      placeholder="enter name ..."
+    />
+    <StyledFormInput
+      {...register("cost", {
+        required: "Price is required",
+        minLength: { value: 2, message: "Minimum characters 2" },
+      })}
+      type="number"
+      placeholder="enter cost ..."
+    />
+    <StyledFormButton />
+  </StyledForm>
+);
 };
+
+

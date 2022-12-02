@@ -23,8 +23,14 @@ const useExpensesContextValue = () => {
           expenses: ctx.expenses.filter((exp) => exp.id !== id),
         }));
       },
-    })
-  );
+      searchValue: "",
+        searchExpense: (name) => {
+          setExpensesContext((ctx) => ({
+        ...ctx,
+        searchValue: name.toLowerCase(),
+      }));
+    },
+  }));
 
   return expensesContext;
 };

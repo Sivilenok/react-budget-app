@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { IExpense } from "../../types/types";
 
 export interface IBudgetContextProviderProps {
   children: ReactNode;

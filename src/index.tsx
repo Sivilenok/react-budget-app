@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import App from "./App";
+import { App } from "./App";
 import { BudgetContextProvider, CurrencyContextProvider, ExpensesContextProvider } from "./context";
 import GlobalStyle from "./globalStyles";
 

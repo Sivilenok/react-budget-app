@@ -19,10 +19,6 @@ export const StyledBudgetInput = styled.input`
   }
 `;
 
-export const StyledTitle = styled.p`
-
-`;
-
 export const StyledBudgetButton = styled.button`
   padding: 10px 25px;
   border-radius: 10px;

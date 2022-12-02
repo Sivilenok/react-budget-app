@@ -1,8 +1,9 @@
-import React, { ChangeEvent } from "react";
-import { StyledTitleText } from "./styles"
+import { StyledTitleText } from "./styles";
 
-export const Title = () => {
-  return (
-    <StyledTitleText>Budget App</StyledTitleText>
-  )
+interface IProps {
+  label: string;
+}
+
+export const Title = ({ label }: IProps) => {
+  return <StyledTitleText>{label}</StyledTitleText>
 };
