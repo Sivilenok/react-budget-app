@@ -1,10 +1,16 @@
 {
   "files": {
-    "main.js": "/github.io/react-budget-app/static/js/main.8a54974f.js",
-    "index.html": "/github.io/react-budget-app/index.html",
-    "main.8a54974f.js.map": "/github.io/react-budget-app/static/js/main.8a54974f.js.map"
+    "main.css": "/github.io/react-blogologo/static/css/main.073c9b0a.css",
+    "main.js": "/github.io/react-blogologo/static/js/main.a89ff1db.js",
+    "static/js/787.5084b018.chunk.js": "/github.io/react-blogologo/static/js/787.5084b018.chunk.js",
+    "static/media/logo.svg": "/github.io/react-blogologo/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/github.io/react-blogologo/index.html",
+    "main.073c9b0a.css.map": "/github.io/react-blogologo/static/css/main.073c9b0a.css.map",
+    "main.a89ff1db.js.map": "/github.io/react-blogologo/static/js/main.a89ff1db.js.map",
+    "787.5084b018.chunk.js.map": "/github.io/react-blogologo/static/js/787.5084b018.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.8a54974f.js"
+    "static/css/main.073c9b0a.css",
+    "static/js/main.a89ff1db.js"
   ]
 }
