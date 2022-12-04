@@ -1,5 +1,4 @@
 import Select, { SingleValue } from "react-select";
-import { optionCSS } from "react-select/dist/declarations/src/components/Option";
 import { useCurrencyContext } from "../../context/CurrencyContext/CurrencyContext";
 
 export const CustomSelect = () => {
