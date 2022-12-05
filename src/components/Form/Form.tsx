@@ -40,7 +40,7 @@ export const Form = () => {
       type="number"
       placeholder="enter cost ..."
     />
-    <StyledFormButton />
+    <StyledFormButton /> 
   </StyledForm>
 );
 };
