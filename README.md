@@ -2,7 +2,7 @@
 
 [Watch][def]
 
-[def]: https://Sivilenok/github.io/react-budget-app
+[def]: https://Sivilenok.github.io/react-budget-app
 
 ## Project description
 
